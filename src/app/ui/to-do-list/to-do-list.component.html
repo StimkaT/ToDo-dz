@@ -1,0 +1,6 @@
+<button (click)="goNext('main')"> go home</button>
+@for (task of tasksList; track task) {
+  <mat-checkbox class="example-margin"> {{ task.titleToDo }} <br> {{task.descriptionToDo}}</mat-checkbox>
+  <button (click)="delete(task.id)">Delete</button>
+  <br>
+}

@@ -1,0 +1,26 @@
+<button mat-button (click)="goNext('list')"><h2>ToDoList</h2></button>
+<br>
+<mat-form-field>
+  <mat-label>Title task</mat-label>
+  <input matInput title="titleToDo"  [(ngModel)]="titleToDo">
+  @if (titleToDo) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="titleToDo=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<br>
+
+<mat-form-field>
+  <mat-label>Description task</mat-label>
+  <textarea matInput [(ngModel)]="descriptionToDo"></textarea>
+  @if (descriptionToDo) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="descriptionToDo=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<button  mat-button [disabled]="!titleToDo || !descriptionToDo" (click)="createTask(titleToDo, descriptionToDo)">add task</button>
+
