@@ -32,4 +32,15 @@ export const toDoReducer = createReducer(
       completed: false }],
 
   })),
+  on(ToDoActions.deleteTask, (state, { id }) => ({
+    ...state,
+      tasks: state.tasks.filter((task) => task.id !== id),
+  })),
+  on(ToDoActions.setComplete, (state, { id }) => ({
+    ...state,
+      tasks: state.tasks.map((task) => task.id === id ? {
+        ...task,
+        completed: !task.completed,
+      } : task ),
+  })),
 );

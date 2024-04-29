@@ -30,5 +30,20 @@ export class ToDoListComponent {
     };
     this.emitter.emit(message);
   }
+  edit(task: number){
+    const message = {
+      event: 'EditTask:buttonClick',
+      task
+    };
+    this.emitter.emit(message);
+  }
+
+  setComplete(task: number){
+    const message = {
+      event: 'SetComplete:buttonClick',
+      task
+    };
+    this.emitter.emit(message);
+  }
 
 }

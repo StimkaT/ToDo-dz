@@ -3,7 +3,7 @@ import {ToDoListComponent} from "../../../ui/to-do-list/to-do-list.component";
 import {getTaskList} from "../../state/todo/todo.selectors";
 import {Store} from "@ngrx/store";
 import {AsyncPipe} from "@angular/common";
-import {deleteTask} from "../../state/todo/todo.actions";
+import {deleteTask, setComplete} from "../../state/todo/todo.actions";
 import {Router} from "@angular/router";
 
 @Component({
@@ -34,6 +34,12 @@ export class ToDoListContainerComponent {
     if ($event.event === 'DeleteTask:buttonClick') {
       this.store$.dispatch(deleteTask({id: $event.task}));
     }
+
+    if ($event.event === 'SetComplete:buttonClick') {
+      this.store$.dispatch(setComplete({id: $event.task}));
+    }
+
+
 
   }
 }
