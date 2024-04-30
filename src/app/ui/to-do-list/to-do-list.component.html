@@ -1,14 +1,23 @@
-<div>
-  <button (click)="goNext('main')"> go home</button>
-</div >
-@for (task of tasksList; track task) {
+<mat-card>
+  <mat-card-content>
+    <div class="todo-button">
+      <button mat-button (click)="goNext('main')"> <h2>Add</h2> </button>
+      <button mat-button disabled> <h2>ToDoList</h2> </button>
+    </div >
 
-  @if (task.completed) {
-    <mat-checkbox class="example-margin" [checked]="task.completed" (click)="setComplete(task.id)"> <del><h2>{{ task.titleToDo }}</h2> <br> {{task.descriptionToDo}} </del></mat-checkbox>
-  } @else if (!task.completed) {
-    <mat-checkbox class="example-margin" [checked]="task.completed" (click)="setComplete(task.id)"> <h2>{{ task.titleToDo }}</h2> <br> {{task.descriptionToDo}}</mat-checkbox>
-  }
-  <button (click)="edit(task.id)">Edit</button>
-  <button (click)="delete(task.id)">Delete</button>
-  <br>
-}
+    @for (task of tasksList; track task) {
+      <div class="cont">
+        @if (task.completed) {
+          <mat-checkbox class="example-margin" [checked]="task.completed" (click)="setComplete(task.id)"> <p><b><del>{{ task.titleToDo }}</del></b></p> <del>{{task.descriptionToDo}} </del></mat-checkbox>
+        } @else if (!task.completed) {
+          <mat-checkbox class="example-margin" [checked]="task.completed" (click)="setComplete(task.id)"> <p><b>{{ task.titleToDo }}</b></p> {{task.descriptionToDo}}</mat-checkbox>
+        }
+        <div class="delete-button">
+          <button mat-button  (click)="delete(task.id)">Delete</button>
+        </div>
+        <br>
+      </div>
+    }
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,1792 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "IToDo",
+            "id": "interface-IToDo-b1f3250f82a1b3fa862ffd038801ae7e99d97d87e3b6ebcaf56f692ca7e8485670578b98f9e370a3976bdf7bc79f972b82d78fd847387d38683c5add4f3236d8",
+            "file": "src/app/web/state/todo/todo.reducer.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {createReducer, on} from '@ngrx/store';\r\nimport * as ToDoActions from './todo.actions';\r\nimport {loadState} from \"./todo.actions\";\r\n\r\nexport const TO_DO_FEATURE_KEY = 'toDo';\r\n\r\nexport interface IToDo {\r\n  id: number;\r\n  titleToDo: string;\r\n  descriptionToDo: string;\r\n  completed: boolean;\r\n}\r\n\r\nexport interface ToDoState {\r\n  implementId: number;\r\n  tasks: IToDo[];\r\n}\r\n\r\nexport const initialState: ToDoState = {\r\n  implementId: 1,\r\n  tasks: [],\r\n};\r\n\r\nexport const toDoReducer = createReducer(\r\n  initialState,\r\n  on(ToDoActions.addNewTask, (state, { titleToDo, descriptionToDo }) => ({\r\n    ...state,\r\n    implementId: state.implementId + 1,\r\n    tasks: [...state.tasks, {\r\n      id: state.implementId,\r\n      titleToDo: titleToDo,\r\n      descriptionToDo: descriptionToDo,\r\n      completed: false }],\r\n\r\n  })),\r\n  on(ToDoActions.deleteTask, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.filter((task) => task.id !== id),\r\n  })),\r\n  on(ToDoActions.setComplete, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.map((task) => task.id === id ? {\r\n        ...task,\r\n        completed: !task.completed,\r\n      } : task ),\r\n  })),\r\n  on(ToDoActions.loadState, (state, {loadState}) => ({...state, ...loadState})),\r\n);\r\n",
+            "properties": [
+                {
+                    "name": "completed",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "descriptionToDo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "titleToDo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ToDoState",
+            "id": "interface-ToDoState-b1f3250f82a1b3fa862ffd038801ae7e99d97d87e3b6ebcaf56f692ca7e8485670578b98f9e370a3976bdf7bc79f972b82d78fd847387d38683c5add4f3236d8",
+            "file": "src/app/web/state/todo/todo.reducer.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {createReducer, on} from '@ngrx/store';\r\nimport * as ToDoActions from './todo.actions';\r\nimport {loadState} from \"./todo.actions\";\r\n\r\nexport const TO_DO_FEATURE_KEY = 'toDo';\r\n\r\nexport interface IToDo {\r\n  id: number;\r\n  titleToDo: string;\r\n  descriptionToDo: string;\r\n  completed: boolean;\r\n}\r\n\r\nexport interface ToDoState {\r\n  implementId: number;\r\n  tasks: IToDo[];\r\n}\r\n\r\nexport const initialState: ToDoState = {\r\n  implementId: 1,\r\n  tasks: [],\r\n};\r\n\r\nexport const toDoReducer = createReducer(\r\n  initialState,\r\n  on(ToDoActions.addNewTask, (state, { titleToDo, descriptionToDo }) => ({\r\n    ...state,\r\n    implementId: state.implementId + 1,\r\n    tasks: [...state.tasks, {\r\n      id: state.implementId,\r\n      titleToDo: titleToDo,\r\n      descriptionToDo: descriptionToDo,\r\n      completed: false }],\r\n\r\n  })),\r\n  on(ToDoActions.deleteTask, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.filter((task) => task.id !== id),\r\n  })),\r\n  on(ToDoActions.setComplete, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.map((task) => task.id === id ? {\r\n        ...task,\r\n        completed: !task.completed,\r\n      } : task ),\r\n  })),\r\n  on(ToDoActions.loadState, (state, {loadState}) => ({...state, ...loadState})),\r\n);\r\n",
+            "properties": [
+                {
+                    "name": "implementId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "tasks",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IToDo[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "file": "src/stories/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-f07e465dd153889ef32e883f2c5d4bbfca44b0e65e097ea87d0edb2a1a1ee1a18c77d0c87eed8914789b9262c8d4fd68569611a4e004cbe86ddaf1cc87d6ebfc",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'ToDo'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [\r\n    RouterOutlet,\r\n  ],\r\n  templateUrl: './app.component.html',\r\n  styleUrl: './app.component.scss'\r\n})\r\nexport class AppComponent {\r\n  title = 'ToDo';\r\n}\r\n",
+            "styleUrl": "./app.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<router-outlet></router-outlet>\r\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-86e2311c54fbca7431c12e070d0fd5b0ebe343eec0553a392f182ba0e04a8f86613233d26ee47718fd0e7a65078f580c76a1fcc928ce55de81193d6618025bc4",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nWhat background color to use\n",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 798,
+                            "end": 811,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 799,
+                                "end": 807,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "\n\nButton contents\n\n",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 43,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 23,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHow large should the button be?\n",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 35,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOptional click handler\n",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 49,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 51
+                    }
+                }
+            }
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-cad94b233ec8e80ceb541e7972c5f9737e08237b4e137112f3987ca48ee0cce5c0d57798d41daa5d4d24d6bdbb2df1606ab68cca2aa0a1785e38f99f3cac0729",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "User | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 78,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-header {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-d32b0f19628254ea3fc5526c4d4564ada1cc83cf936759006d90a46f5874b02a3359e331bddda20b22e74a616a6443c660602ba74dd38ebe1160759e0de6f7ba",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 69
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "doCreateAccount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HeaderComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-page {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\n.storybook-page h2 {\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\n.storybook-page ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.storybook-page .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "ToDoCreateFormComponent",
+            "id": "component-ToDoCreateFormComponent-ef12291351f58d021f2ef7d64d01dde8104eace3cac47d257922eee3217ee238aa2fe02b2b113c23f172dee3075d00d0e7845dbe42dfe2330e243e9178a21dfe",
+            "file": "src/app/ui/to-do-create-form/to-do-create-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "create-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./to-do-create-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "emitter",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "descriptionToDo",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "titleToDo",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createTask",
+                    "args": [
+                        {
+                            "name": "titleToDo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "descriptionToDo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "titleToDo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "descriptionToDo",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "goNext",
+                    "args": [
+                        {
+                            "name": "event$",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event$",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MatInputModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCardModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { MatInputModule } from \"@angular/material/input\";\r\nimport { FormsModule } from \"@angular/forms\";\r\nimport { MatIconModule } from \"@angular/material/icon\";\r\nimport { MatButtonModule } from \"@angular/material/button\";\r\nimport {MatCardModule} from \"@angular/material/card\";\r\n\r\n@Component({\r\n  selector: 'create-form',\r\n  standalone: true,\r\n  imports: [\r\n    MatInputModule,\r\n    FormsModule,\r\n    MatIconModule,\r\n    MatButtonModule,\r\n    MatCardModule,\r\n  ],\r\n  templateUrl: './to-do-create-form.component.html',\r\n  styleUrl: './to-do-create-form.component.scss'\r\n})\r\nexport class ToDoCreateFormComponent {\r\n  @Output() emitter = new EventEmitter<any>();\r\n\r\n  titleToDo = '';\r\n  descriptionToDo = '';\r\n\r\n  createTask(titleToDo: string, descriptionToDo: string) {\r\n    if (this.titleToDo) {\r\n      const message = {\r\n        event: 'ToDoComponent:buttonClick',\r\n        titleToDo,\r\n        descriptionToDo\r\n      };\r\n      this.emitter.emit(message);\r\n\r\n      this.titleToDo = '';\r\n      this.descriptionToDo = '';\r\n    }\r\n  }\r\n\r\n  goNext(event$: string){\r\n    const message = {\r\n      event: 'ToDoComponent:buttonClick',\r\n      rout: event$\r\n    };\r\n    this.emitter.emit(message)\r\n  }\r\n}\r\n",
+            "styleUrl": "./to-do-create-form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<mat-card>\r\n  <mat-card-content>\r\n    <div>\r\n      <button mat-button disabled><h2>Add</h2></button>\r\n      <button mat-button (click)=\"goNext('list')\"><h2>ToDoList</h2></button>\r\n    </div>\r\n    <div>\r\n      <mat-form-field>\r\n        <mat-label>Title task</mat-label>\r\n        <input matInput title=\"titleToDo\"  [(ngModel)]=\"titleToDo\">\r\n        @if (titleToDo) {\r\n          <button matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"titleToDo=''\">\r\n            <mat-icon>close</mat-icon>\r\n          </button>\r\n        }\r\n      </mat-form-field>\r\n    </div>\r\n\r\n    <div>\r\n      <mat-form-field>\r\n        <mat-label>Description task</mat-label>\r\n        <textarea matInput [(ngModel)]=\"descriptionToDo\"></textarea>\r\n        @if (descriptionToDo) {\r\n          <button matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"descriptionToDo=''\">\r\n            <mat-icon>close</mat-icon>\r\n          </button>\r\n        }\r\n      </mat-form-field>\r\n    </div>\r\n    <mat-card-actions align=\"end\">\r\n      <button  mat-button [disabled]=\"!titleToDo || !descriptionToDo\" (click)=\"createTask(titleToDo, descriptionToDo)\">add task</button>\r\n    </mat-card-actions>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
+        },
+        {
+            "name": "ToDoCreateFormContainerComponent",
+            "id": "component-ToDoCreateFormContainerComponent-d83d36bb46d06ec1a9460c55a9e76c3ae7017bbca74e323c69273d9a6b6e2abe9ca48fcb019a88d25a3a8499754cf0af23353c7755d0d175c2678db0986c4f70",
+            "file": "src/app/web/conainers/to-do-create-form-container/to-do-create-form-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "create-form-container",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./to-do-create-form-container.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "loadStorage",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "events",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "loadFromStorage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ToDoCreateFormComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport {ToDoCreateFormComponent} from \"../../../ui/to-do-create-form/to-do-create-form.component\";\r\nimport {select, Store} from \"@ngrx/store\";\r\nimport {addNewTask, loadState} from \"../../state/todo/todo.actions\";\r\nimport {Router} from \"@angular/router\";\r\nimport {selectFeature} from \"../../state/todo/todo.selectors\";\r\nimport {filter} from \"rxjs\";\r\nimport {TASK_LOCALSTORAGE_KEY} from \"../to-do-list-container/to-do-list-container.component\";\r\n\r\n@Component({\r\n  selector: 'create-form-container',\r\n  standalone: true,\r\n  imports: [\r\n    ToDoCreateFormComponent,\r\n  ],\r\n  templateUrl: './to-do-create-form-container.component.html',\r\n  styleUrl: './to-do-create-form-container.component.scss'\r\n})\r\nexport class ToDoCreateFormContainerComponent {\r\n\r\n  constructor(\r\n    private store$: Store,\r\n    private router: Router,\r\n  ) {}\r\n\r\n  private loadStorage: boolean = false;\r\n\r\n  ngOnInit() {\r\n    if (this.loadStorage) {\r\n      return\r\n    }\r\n\r\n    this.loadStorage = true;\r\n\r\n    this.loadFromStorage();\r\n  }\r\n\r\n  private loadFromStorage() {\r\n    const storageState = localStorage.getItem(TASK_LOCALSTORAGE_KEY);\r\n    console.log('из локала получили', storageState);\r\n    if (storageState) {\r\n      this.store$.dispatch(loadState({loadState: JSON.parse(storageState)}));\r\n    }\r\n  }\r\n\r\n  events($event: any) {\r\n    if ($event.titleToDo) {\r\n      this.store$.dispatch(addNewTask({titleToDo: $event.titleToDo, descriptionToDo: $event.descriptionToDo}));\r\n    }\r\n\r\n    if ($event.event === 'ToDoComponent:buttonClick' && $event.rout === 'list') {\r\n      this.router.navigate(['/list']);\r\n    }\r\n\r\n    this.loadFromStorage();\r\n\r\n    this.store$.pipe(\r\n      select(selectFeature),\r\n      filter(state => !!state)\r\n    ).subscribe(state => {\r\n      localStorage.setItem(TASK_LOCALSTORAGE_KEY, JSON.stringify(state));\r\n    })\r\n\r\n  }\r\n}\r\n",
+            "styleUrl": "./to-do-create-form-container.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "store$",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 19,
+                "jsdoctags": [
+                    {
+                        "name": "store$",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<create-form (emitter)=\"events($event)\"></create-form>\r\n"
+        },
+        {
+            "name": "ToDoListComponent",
+            "id": "component-ToDoListComponent-3d2554b1828caa70ca2969fc07e645c0a42b78dc02adf8f0b4cc576d8858b8c978c07eb8ff464a6b7a20b7dc72138db0cb5bdc13d8b22688b9849751fdcdf0e2",
+            "file": "src/app/ui/to-do-list/to-do-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "to-do-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./to-do-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "tasksList",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "IToDo[] | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "emitter",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "delete",
+                    "args": [
+                        {
+                            "name": "task",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "task",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "goNext",
+                    "args": [
+                        {
+                            "name": "event$",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event$",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setComplete",
+                    "args": [
+                        {
+                            "name": "task",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "task",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MatCheckboxModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCard"
+                },
+                {
+                    "name": "MatCardContent"
+                },
+                {
+                    "name": "MatButton"
+                },
+                {
+                    "name": "MatCardActions"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {IToDo} from \"../../web/state/todo/todo.reducer\";\r\nimport {MatCheckboxModule} from \"@angular/material/checkbox\";\r\nimport {MatCard, MatCardActions, MatCardContent} from \"@angular/material/card\";\r\nimport {MatButton} from \"@angular/material/button\";\r\n\r\n@Component({\r\n  selector: 'to-do-list',\r\n  standalone: true,\r\n  imports: [\r\n    MatCheckboxModule,\r\n    MatCard,\r\n    MatCardContent,\r\n    MatButton,\r\n    MatCardActions,\r\n  ],\r\n  templateUrl: './to-do-list.component.html',\r\n  styleUrl: './to-do-list.component.scss'\r\n})\r\nexport class ToDoListComponent {\r\n@Input() tasksList: IToDo[] | null = [];\r\n@Output() emitter = new EventEmitter<any>();\r\n\r\n  goNext(event$: string){\r\n    const message = {\r\n      event: 'ToDoComponent:buttonClick',\r\n      rout: event$\r\n    };\r\n    this.emitter.emit(message)\r\n  }\r\n\r\n  delete(task: number){\r\n    const message = {\r\n      event: 'DeleteTask:buttonClick',\r\n      task\r\n    };\r\n    this.emitter.emit(message);\r\n  }\r\n\r\n  setComplete(task: number){\r\n    const message = {\r\n      event: 'SetComplete:buttonClick',\r\n      task\r\n    };\r\n    this.emitter.emit(message);\r\n  }\r\n\r\n}\r\n",
+            "styleUrl": "./to-do-list.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<mat-card>\r\n  <mat-card-content>\r\n    <div class=\"todo-button\">\r\n      <button mat-button (click)=\"goNext('main')\"> <h2>Add</h2> </button>\r\n      <button mat-button disabled> <h2>ToDoList</h2> </button>\r\n    </div >\r\n\r\n    @for (task of tasksList; track task) {\r\n      <div class=\"cont\">\r\n        @if (task.completed) {\r\n          <mat-checkbox class=\"example-margin\" [checked]=\"task.completed\" (click)=\"setComplete(task.id)\"> <p><b><del>{{ task.titleToDo }}</del></b></p> <del>{{task.descriptionToDo}} </del></mat-checkbox>\r\n        } @else if (!task.completed) {\r\n          <mat-checkbox class=\"example-margin\" [checked]=\"task.completed\" (click)=\"setComplete(task.id)\"> <p><b>{{ task.titleToDo }}</b></p> {{task.descriptionToDo}}</mat-checkbox>\r\n        }\r\n        <div class=\"delete-button\">\r\n          <button mat-button  (click)=\"delete(task.id)\">Delete</button>\r\n        </div>\r\n        <br>\r\n      </div>\r\n    }\r\n\r\n  </mat-card-content>\r\n</mat-card>\r\n"
+        },
+        {
+            "name": "ToDoListContainerComponent",
+            "id": "component-ToDoListContainerComponent-5178de9e8b28d595d113b9b1ff882d23af6f7307c38e01b69b4db8d2446b356cf3887ee695415deafd5093a3c4173729a03171135fdc5b7febaf872f125fb6bb",
+            "file": "src/app/web/conainers/to-do-list-container/to-do-list-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "to-do-list-container",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./to-do-list-container.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isInit",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "loadStorage",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "tasksList$",
+                    "defaultValue": "this.store$.select(getTaskList)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "events",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "loadFromStorage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ToDoListComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "AsyncPipe",
+                    "type": "pipe"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport {ToDoListComponent} from \"../../../ui/to-do-list/to-do-list.component\";\r\nimport {getTaskList, selectFeature} from \"../../state/todo/todo.selectors\";\r\nimport {select, Store} from \"@ngrx/store\";\r\nimport {AsyncPipe} from \"@angular/common\";\r\nimport {deleteTask, loadState, setComplete} from \"../../state/todo/todo.actions\";\r\nimport {Router} from \"@angular/router\";\r\nimport {filter} from \"rxjs\";\r\n\r\nexport const TASK_LOCALSTORAGE_KEY = 'task'\r\n\r\n@Component({\r\n  selector: 'to-do-list-container',\r\n  standalone: true,\r\n  imports: [\r\n    ToDoListComponent,\r\n    AsyncPipe,\r\n  ],\r\n  templateUrl: './to-do-list-container.component.html',\r\n  styleUrl: './to-do-list-container.component.scss'\r\n})\r\nexport class ToDoListContainerComponent {\r\n  tasksList$ = this.store$.select(getTaskList);\r\n\r\n  isInit = false;\r\n\r\n  constructor(\r\n    private store$: Store,\r\n    private router: Router,\r\n  ) {}\r\n\r\n  private loadStorage: boolean = false;\r\n\r\n  ngOnInit() {\r\n    if (this.loadStorage) {\r\n      return\r\n    }\r\n\r\n    this.loadStorage = true;\r\n\r\n    this.loadFromStorage();\r\n  }\r\n\r\n  private loadFromStorage() {\r\n    const storageState = localStorage.getItem(TASK_LOCALSTORAGE_KEY);\r\n    console.log('из локала получили', storageState);\r\n    if (storageState) {\r\n      this.store$.dispatch(loadState({loadState: JSON.parse(storageState)}));\r\n    }\r\n  }\r\n\r\n\r\n  events($event: any) {\r\n\r\n    if ($event.event === 'ToDoComponent:buttonClick' && $event.rout === 'main') {\r\n      this.router.navigate(['']);\r\n    }\r\n\r\n    if ($event.event === 'DeleteTask:buttonClick') {\r\n      this.store$.dispatch(deleteTask({id: $event.task}));\r\n    }\r\n\r\n    if ($event.event === 'SetComplete:buttonClick') {\r\n      this.store$.dispatch(setComplete({id: $event.task}));\r\n    }\r\n\r\n    this.store$.pipe(\r\n      select(selectFeature),\r\n      filter(state => !!state)\r\n    ).subscribe(state => {\r\n      localStorage.setItem(TASK_LOCALSTORAGE_KEY, JSON.stringify(state));\r\n    })\r\n\r\n  }\r\n}\r\n",
+            "styleUrl": "./to-do-list-container.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "store$",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 25,
+                "jsdoctags": [
+                    {
+                        "name": "store$",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<to-do-list [tasksList]=\"tasksList$|async\" (emitter)=\"events($event)\"></to-do-list>\r\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "addNewTask",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  `[todoList] addNewTask`,\r\n  props<{ titleToDo: string, descriptionToDo: string }>()\r\n)"
+            },
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\r\n  providers: [\r\n    provideRouter(routes),\r\n    provideStore(),\r\n    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),\r\n    provideEffects(),\r\n    provideState(TO_DO_FEATURE_KEY, toDoReducer),\r\n    provideAnimationsAsync(),\r\n  ]\r\n}"
+            },
+            {
+                "name": "deleteTask",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  `[todoList] deleteTask`,\r\n  props<{ id: number }>()\r\n)"
+            },
+            {
+                "name": "getTaskList",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createSelector(\r\n  selectFeature,\r\n  (state: ToDoState) => state.tasks\r\n)"
+            },
+            {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ToDoState",
+                "defaultValue": "{\r\n  implementId: 1,\r\n  tasks: [],\r\n}"
+            },
+            {
+                "name": "loadState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  `[todoList] loadState`,\r\n  props<{ loadState: ToDoState }>()\r\n)"
+            },
+            {
+                "name": "markTask",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  `[todoList] markTask`,\r\n  props<{ completed: boolean }>()\r\n)"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ToDoCreateFormComponent>",
+                "defaultValue": "{\r\n  title: 'UI Components/ToDoCreateFormComponent',\r\n  component: ToDoCreateFormComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [BrowserAnimationsModule],\r\n    }),\r\n    componentWrapperDecorator(\r\n      (story) => `<div>${story}</div>`\r\n    ),\r\n  ],\r\n  render: (args: ToDoCreateFormComponent) => ({\r\n    props: {\r\n      ...args,\r\n    },\r\n  }),\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/ui/to-do-list/to-do-list.story.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ToDoListComponent>",
+                "defaultValue": "{\r\n  title: 'UI Components/ToDoListComponent',\r\n  component: ToDoListComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [],\r\n    }),\r\n    componentWrapperDecorator(\r\n      (story) => `<div>${story}</div>`\r\n    ),\r\n  ],\r\n  render: (args: ToDoListComponent) => ({\r\n    props: {\r\n      ...args,\r\n    },\r\n  }),\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n\r\n  },\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/ui/to-do-list/to-do-list.story.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n  },\r\n}"
+            },
+            {
+                "name": "selectFeature",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createFeatureSelector<ToDoState>(TO_DO_FEATURE_KEY)"
+            },
+            {
+                "name": "setComplete",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  `[todoList] setComplete`,\r\n  props<{ id: number }>()\r\n)"
+            },
+            {
+                "name": "TASK_LOCALSTORAGE_KEY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/conainers/to-do-list-container/to-do-list-container.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'task'"
+            },
+            {
+                "name": "TO_DO_FEATURE_KEY",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'toDo'"
+            },
+            {
+                "name": "toDoReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/web/state/todo/todo.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createReducer(\r\n  initialState,\r\n  on(ToDoActions.addNewTask, (state, { titleToDo, descriptionToDo }) => ({\r\n    ...state,\r\n    implementId: state.implementId + 1,\r\n    tasks: [...state.tasks, {\r\n      id: state.implementId,\r\n      titleToDo: titleToDo,\r\n      descriptionToDo: descriptionToDo,\r\n      completed: false }],\r\n\r\n  })),\r\n  on(ToDoActions.deleteTask, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.filter((task) => task.id !== id),\r\n  })),\r\n  on(ToDoActions.setComplete, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.map((task) => task.id === id ? {\r\n        ...task,\r\n        completed: !task.completed,\r\n      } : task ),\r\n  })),\r\n  on(ToDoActions.loadState, (state, {loadState}) => ({...state, ...loadState})),\r\n)"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ToDoCreateFormComponent>",
+                "file": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ToDoListComponent>",
+                "file": "src/app/ui/to-do-list/to-do-list.story.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/web/state/todo/todo.actions.ts": [
+                {
+                    "name": "addNewTask",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  `[todoList] addNewTask`,\r\n  props<{ titleToDo: string, descriptionToDo: string }>()\r\n)"
+                },
+                {
+                    "name": "deleteTask",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  `[todoList] deleteTask`,\r\n  props<{ id: number }>()\r\n)"
+                },
+                {
+                    "name": "loadState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  `[todoList] loadState`,\r\n  props<{ loadState: ToDoState }>()\r\n)"
+                },
+                {
+                    "name": "markTask",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  `[todoList] markTask`,\r\n  props<{ completed: boolean }>()\r\n)"
+                },
+                {
+                    "name": "setComplete",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  `[todoList] setComplete`,\r\n  props<{ id: number }>()\r\n)"
+                }
+            ],
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\r\n  providers: [\r\n    provideRouter(routes),\r\n    provideStore(),\r\n    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),\r\n    provideEffects(),\r\n    provideState(TO_DO_FEATURE_KEY, toDoReducer),\r\n    provideAnimationsAsync(),\r\n  ]\r\n}"
+                }
+            ],
+            "src/app/web/state/todo/todo.selectors.ts": [
+                {
+                    "name": "getTaskList",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createSelector(\r\n  selectFeature,\r\n  (state: ToDoState) => state.tasks\r\n)"
+                },
+                {
+                    "name": "selectFeature",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createFeatureSelector<ToDoState>(TO_DO_FEATURE_KEY)"
+                }
+            ],
+            "src/app/web/state/todo/todo.reducer.ts": [
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ToDoState",
+                    "defaultValue": "{\r\n  implementId: 1,\r\n  tasks: [],\r\n}"
+                },
+                {
+                    "name": "TO_DO_FEATURE_KEY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'toDo'"
+                },
+                {
+                    "name": "toDoReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/state/todo/todo.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createReducer(\r\n  initialState,\r\n  on(ToDoActions.addNewTask, (state, { titleToDo, descriptionToDo }) => ({\r\n    ...state,\r\n    implementId: state.implementId + 1,\r\n    tasks: [...state.tasks, {\r\n      id: state.implementId,\r\n      titleToDo: titleToDo,\r\n      descriptionToDo: descriptionToDo,\r\n      completed: false }],\r\n\r\n  })),\r\n  on(ToDoActions.deleteTask, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.filter((task) => task.id !== id),\r\n  })),\r\n  on(ToDoActions.setComplete, (state, { id }) => ({\r\n    ...state,\r\n      tasks: state.tasks.map((task) => task.id === id ? {\r\n        ...task,\r\n        completed: !task.completed,\r\n      } : task ),\r\n  })),\r\n  on(ToDoActions.loadState, (state, {loadState}) => ({...state, ...loadState})),\r\n)"
+                }
+            ],
+            "src/app/ui/to-do-create-form/to-do-create-form.story.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ToDoCreateFormComponent>",
+                    "defaultValue": "{\r\n  title: 'UI Components/ToDoCreateFormComponent',\r\n  component: ToDoCreateFormComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [BrowserAnimationsModule],\r\n    }),\r\n    componentWrapperDecorator(\r\n      (story) => `<div>${story}</div>`\r\n    ),\r\n  ],\r\n  render: (args: ToDoCreateFormComponent) => ({\r\n    props: {\r\n      ...args,\r\n    },\r\n  }),\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n\r\n  },\r\n}"
+                }
+            ],
+            "src/app/ui/to-do-list/to-do-list.story.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/ui/to-do-list/to-do-list.story.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ToDoListComponent>",
+                    "defaultValue": "{\r\n  title: 'UI Components/ToDoListComponent',\r\n  component: ToDoListComponent,\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [],\r\n    }),\r\n    componentWrapperDecorator(\r\n      (story) => `<div>${story}</div>`\r\n    ),\r\n  ],\r\n  render: (args: ToDoListComponent) => ({\r\n    props: {\r\n      ...args,\r\n    },\r\n  }),\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/ui/to-do-list/to-do-list.story.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n  },\r\n}"
+                }
+            ],
+            "src/app/web/conainers/to-do-list-container/to-do-list-container.component.ts": [
+                {
+                    "name": "TASK_LOCALSTORAGE_KEY",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/web/conainers/to-do-list-container/to-do-list-container.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'task'"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/ui/to-do-create-form/to-do-create-form.story.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ToDoCreateFormComponent>",
+                    "file": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "src/app/ui/to-do-list/to-do-list.story.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ToDoListComponent>",
+                    "file": "src/app/ui/to-do-list/to-do-list.story.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 3,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/to-do-create-form/to-do-create-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToDoCreateFormComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/to-do-create-form/to-do-create-form.story.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/to-do-list/to-do-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToDoListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/to-do-list/to-do-list.story.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/to-do-list/to-do-list.story.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/conainers/to-do-create-form-container/to-do-create-form-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToDoCreateFormContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/conainers/to-do-list-container/to-do-list-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToDoListContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/conainers/to-do-list-container/to-do-list-container.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TASK_LOCALSTORAGE_KEY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "addNewTask",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "deleteTask",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "markTask",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "setComplete",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.reducer.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IToDo",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.reducer.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ToDoState",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TO_DO_FEATURE_KEY",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "toDoReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getTaskList",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/web/state/todo/todo.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectFeature",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            }
+        ]
+    }
+}

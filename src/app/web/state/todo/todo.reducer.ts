@@ -1,5 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import * as ToDoActions from './todo.actions';
+import {loadState} from "./todo.actions";
 
 export const TO_DO_FEATURE_KEY = 'toDo';
 
@@ -43,4 +44,5 @@ export const toDoReducer = createReducer(
         completed: !task.completed,
       } : task ),
   })),
+  on(ToDoActions.loadState, (state, {loadState}) => ({...state, ...loadState})),
 );
